@@ -1,26 +1,20 @@
 /* eslint-disable react/prop-types */
 import { Component } from "react";
 import Car from "./Car";
-import MyHeader from "./MyHeader";
-import Wrapper from "./Wrapper";
 
 class Mycars extends Component {
-  state = {
-    cars: ["Ford", "BMW", "Peugeot"],
+  styledTitle = (e) => {
+    e.target.classList.toggle("styled");
   };
-  render() {
-    const { title } = this.props;
-    const { color } = this.props;
 
+  render() {
     return (
       <div>
-        <Wrapper>
-          <MyHeader myStyle={color}>{title}</MyHeader>
-          {/* <h1 style={{ color: color }}>{title}</h1> */}
-        </Wrapper>
-        <Car color="white">{this.state.cars[0]}</Car>
-        <Car>{this.state.cars[1]}</Car>
-        <Car color="green">{this.state.cars[2]}</Car>
+        <h1 onMouseOver={this.styledTitle}>{this.props.title}</h1>
+
+        <Car color="red">Ford</Car>
+        <Car>Mercedes</Car>
+        <Car color="green"></Car>
       </div>
     );
   }

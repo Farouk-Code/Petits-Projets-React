@@ -1,16 +1,17 @@
 /* eslint-disable react/prop-types */
-import Wrapper from "./Wrapper";
-function Car({ children, color }) {
-  let colorInfo = "";
-  color ? (colorInfo = color) : (colorInfo = "Néant");
-  return (
-    children && (
-      <Wrapper>
+const Car = ({ color, children }) => {
+  const colorInfo = color ? <p>Couleur: {color}</p> : <p>Couleur: Néant</p>;
+
+  if (children) {
+    return (
+      <div style={{ backgroundColor: "pink", width: "400px", padding: "10px", margin: "5px auto" }}>
         <p>Marque: {children}</p>
-        <p>Couleur: {colorInfo}</p>
-      </Wrapper>
-    )
-  );
-}
+        {colorInfo}
+      </div>
+    );
+  }
+
+  // return null // ce return est Facultatif
+};
 
 export default Car;
