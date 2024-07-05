@@ -3,30 +3,26 @@ import Toto from "./Toto";
 
 class Mom extends Component {
   state = {
-    momMessage: null,
-    totosMessage: null,
+    messageMaman: null,
+    messageToto: null,
+    disabled: true,
   };
 
-  momsOrder = () => {
-    this.setState({
-      momMessage: "Va ranger ta chambre",
-    });
-  };
-
-  totosResponse = () => {
-    this.setState({
-      totosMessage: "D'accord maman",
-    });
-  };
+  // Compléter le code de la méthode ordreMaman.
+  ordreMaman = (msg) => this.setState({ messageMaman: msg, disabled: false });
+  reponseToto = (msg) => this.setState({ messageToto: msg });
 
   render() {
     return (
       <div>
         <h1>Maman</h1>
-        <button onClick={this.momsOrder}>Ordre</button>
-        <p>{this.state.momMessage}</p>
+        <button onClick={() => this.ordreMaman("Va ranger ta chambre")}>Order de la mère</button>
+
+        <p>{this.state.messageMaman}</p>
+
         <hr />
-        <Toto name="Toto" totosResponse={this.totosResponse} theState={this.state} />
+
+        <Toto name="Toto" reponseTotoProps={this.reponseToto} leState={this.state} />
       </div>
     );
   }
