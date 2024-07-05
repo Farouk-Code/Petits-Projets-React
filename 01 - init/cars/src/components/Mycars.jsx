@@ -5,9 +5,9 @@ import Car from "./Car";
 class Mycars extends Component {
   state = {
     cars: [
-      { name: "Ford", color: "red", year: 2000 },
-      { name: "Mercedes", color: "black", year: 2010 },
-      { name: "Peugeot", color: "green", year: 2018 },
+      { name: "Ford", color: "red", year: 2002 },
+      { name: "Mercedes", color: "black", year: 2023 },
+      { name: "Peugeot", color: "green", year: 2024 },
     ],
   };
 
@@ -21,19 +21,32 @@ class Mycars extends Component {
     });
   };
 
-  render() {
-    const year = new Date().getFullYear();
+  getAge = (year) => {
+    const now = new Date().getFullYear();
+    const age = now - year;
 
+    let frenchYearStr = "";
+
+    if (age === 1) {
+      frenchYearStr = "an";
+    } else if (age > 1) {
+      frenchYearStr = "ans";
+    }
+
+    return `${age} ${frenchYearStr}`;
+  };
+
+  render() {
     return (
       <div>
         <h1>{this.props.title}</h1>
 
         <button onClick={this.addTenYears}>+ 10 ans</button>
 
-        {this.state.cars.map((car, index) => {
+        {this.state.cars.map(({ name, color, year }, index) => {
           return (
             <div key={index}>
-              <Car name={car.name} color={car.color} year={year - car.year + " ans"} />
+              <Car name={name} color={color} year={this.getAge(year)} />
             </div>
           );
         })}
