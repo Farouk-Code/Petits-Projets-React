@@ -3,14 +3,10 @@ import { Component } from "react";
 import Car from "./Car";
 
 class Mycars extends Component {
-  styledTitle = (e) => {
-    e.target.classList.toggle("styled");
-  };
-
   render() {
     return (
       <div>
-        <h1 onMouseOver={this.styledTitle}>{this.props.title}</h1>
+        <h1>{this.props.title}</h1>
 
         <Car color="red">Ford</Car>
         <Car>Mercedes</Car>

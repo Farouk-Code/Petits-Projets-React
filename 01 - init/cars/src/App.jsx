@@ -7,12 +7,6 @@ class App extends Component {
     titre: "Mon Catalogue Voitures",
   };
 
-  changeTitleParam = (titre) => {
-    this.setState({
-      titre: titre,
-    });
-  };
-
   changeInput = (e) => {
     this.setState({
       titre: e.target.value,
@@ -23,7 +17,6 @@ class App extends Component {
     return (
       <div className="App">
         <Mycars title={this.state.titre} />
-        <button onClick={() => this.changeTitleParam("Nouveau Titre")}>Changer le titre via un paramètre</button> <br />
         <input type="text" onChange={this.changeInput} value={this.state.titre} />
       </div>
     );
