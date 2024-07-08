@@ -5,7 +5,7 @@ class Form extends Component {
   render() {
     return (
       <div>
-        <CarImg />
+        <CarImg color="#646cff" height="200px" />
         <h1>Commentaire</h1>
       </div>
     );
