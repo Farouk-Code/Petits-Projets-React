@@ -2,7 +2,7 @@
 // import car from "./assets/car.png";
 const CarImg = ({ color, height }) => {
   return (
-    <svg className="car-border" height={height} viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg">
+    <svg height={height} viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg">
       <title />
       <path
         fill={color}
