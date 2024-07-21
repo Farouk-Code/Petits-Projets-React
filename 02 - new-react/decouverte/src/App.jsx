@@ -1,32 +1,36 @@
-let hidden = false;
-const todos = ["Présenter react", "Presenter le JSX", "Créer des composants"];
+import { useState } from "react";
 
 function App() {
+  const [person, setPerson] = useState({
+    firstName: "john",
+    lastName: "Doe",
+    age: 20,
+  });
+
+  const [count, setCount] = useState(0);
+
+  const increaseAge = () => {
+    setPerson({ ...person, age: person.age + 1 });
+    countIncrement();
+  };
+
+  const resetAge = () => {
+    setPerson({ ...person, age: 20 });
+    setCount(0);
+  };
+
+  const countIncrement = () => setCount(count + 1);
+
   return (
     <>
-      <Title color="green" hidden={hidden}>
-        Mon comoposant
-      </Title>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, minus rerum, ducimus quidem atque, sed
-        dolore sequi rem consequatur doloremque labore. Ipsum ipsa veritatis distinctio beatae, ullam nesciunt optio
-        vero.
+        {person.firstName} : {person.age}
       </p>
-
-      {todos.map((todo, index) => (
-        <li key={index}>{todo}</li>
-      ))}
+      <button onClick={increaseAge}>Augmenter age</button>
+      <button onClick={resetAge}>Réinitialiser age</button>
+      <p>Compteur incrémentation : {count}</p>
     </>
   );
-}
-
-// eslint-disable-next-line react/prop-types
-function Title({ color, children, hidden }) {
-  if (hidden) {
-    return null;
-  }
-
-  return <h1 style={{ color: color }}>{children}</h1>;
 }
 
 export default App;
